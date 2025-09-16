@@ -35,11 +35,10 @@ class Bot:
         self._arm_motor.run_angle(100, d, then=Stop.HOLD, wait=True)
         self._arm_motor.hold()
 
-    def move_forward(self, distance):
+    def update_coords(self, distance):
         rad = math.radians(self.rotation)
         self.coords[0] += math.cos(rad)
         self.coords[1] += math.sin(rad)
-        self.robot.straight(distance)
     
     def update_rotation(self, angle):
         self.rotation += angle
