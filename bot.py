@@ -1,3 +1,4 @@
+import math
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, UltrasonicSensor, GyroSensor, Stop
 from pybricks.parameters import Port, Direction
@@ -15,6 +16,8 @@ class Bot:
         self._robot = DriveBase(self._left_motor, self._right_motor, wheel_diameter=WHEEL_DIAMETER, axle_track=AXLE_TRACK)
         self._ultrasonic = UltrasonicSensor(ULTRASONIC_PORT)
         self._gyro = GyroSensor(GYRO_PORT, Direction.CLOCKWISE)
+        self._coords = [0, 0]
+        self._rotation = 0
 
     def is_near(self, min_distance: int) -> bool:
         return self.ultrasonic.distance(silent=False) < min_distance
@@ -35,6 +38,19 @@ class Bot:
         self._arm_motor.run_angle(100, d, then=Stop.HOLD, wait=True)
         self._arm_motor.hold()
 
+    def rotate_angle(self, distance):
+        rad = math.radians(self.rotation)
+        self.coords[0] += math.cos(rad)
+        self.coords[1] += math.sin(rad)
+    
+    def update_rotation(self, angle):
+        self.rotation += angle
+    
+    def go_home(self):
+        
+
+
+    
     @property
     def robot(self) -> DriveBase:
         return self._robot
