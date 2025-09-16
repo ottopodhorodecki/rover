@@ -1,9 +1,9 @@
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, UltrasonicSensor, GyroSensor, Stop
-from pybricks.parameters import Port, Direction
+from pybricks.parameters import Direction
 from pybricks.robotics import DriveBase
 
-from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, GYRO_PORT, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT
+from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, GYRO_PORT, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, ROTATION_COMPENSATION
 
 
 class Bot:
@@ -27,13 +27,14 @@ class Bot:
 
         return distance_moved
 
-    def say_ow():
-        return
-
     def actuate_arm(self, reversing: bool = False):
-        d = 90 if not reversing else -90
+        d = -180 if not reversing else 180
         self._arm_motor.run_angle(100, d, then=Stop.HOLD, wait=True)
         self._arm_motor.hold()
+
+    def rotate(self, degrees: int):
+        self._left_motor.run_angle(1000, degrees, then=Stop.HOLD, wait=True)
+        self._right_motor.run_angle(1000, ROTATION_COMPENSATION, then=Stop.HOLD, wait=True)
 
     @property
     def robot(self) -> DriveBase:
