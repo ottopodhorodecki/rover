@@ -17,10 +17,10 @@ def fetch_item_straight_line(b: Bot):
     b.actuate_arm()
     b.robot.straight(-distance)
     print("rotating 1")
-    b.rotate(convert_wheel_angle(180))
+    b.robot.turn(180)
     b.actuate_arm(reversing=True)
     print("rotating 2")
-    b.rotate(convert_wheel_angle(180))
+    b.robot.turn(180)
 
 
 def main():

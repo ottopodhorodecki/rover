@@ -36,22 +36,22 @@ class Bot:
         self._arm_motor.hold()
 
     def move_forward(self, distance):
-        rad = math.radians(self.rotation)
-        self.coords[0] += math.cos(rad)
-        self.coords[1] += math.sin(rad)
+        rad = math.radians(self._rotation)
+        self._coords[0] += math.cos(rad)
+        self._coords[1] += math.sin(rad)
         self.robot.straight(distance)
     
     def update_rotation(self, angle):
-        self.rotation += angle
+        self._rotation += angle
     
     def go_home(self):
-        self.rotate(-self.rotation)
-        self.move_forward(self, math.sqrt(self.coords[1]**2 + self.coords[0]**2))
+        self.rotate(-self._rotation)
+        self.move_forward(math.sqrt(self._coords[1]**2 + self._coords[0]**2))
     
-    def rotate(self, degrees: int):
-        self._left_motor.run_angle(1000, degrees, then=Stop.HOLD, wait=True)
-        self._right_motor.run_angle(1000, ROTATION_COMPENSATION, then=Stop.HOLD, wait=True)
-        self.rotate += degrees
+    def rotate(self, degrees: float):
+        self._left_motor.run_angle(100, degrees, wait=True)
+        self._right_motor.run_angle(100, ROTATION_COMPENSATION, wait=True)
+        self._rotation += degrees
 
     @property
     def robot(self) -> DriveBase:
