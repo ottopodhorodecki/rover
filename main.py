@@ -16,15 +16,17 @@ def fetch_item_straight_line(b: Bot):
     distance = b.move_whilst_not_near(min_distance=40, interval=50)
     b.actuate_arm()
     b.robot.straight(-distance)
-    b.rotate(convert_wheel_angle(180))
+    print("rotating 1")
+    b.robot.turn(180)
     b.actuate_arm(reversing=True)
-    b.rotate(convert_wheel_angle(180))
+    print("rotating 2")
+    b.robot.turn(180)
 
 
 def main():
     b = Bot()
     fetch_item_straight_line(b)
-    # b.rotate(convert_wheel_angle(90))
+    #b.rotate(convert_wheel_angle(90))
     #reset_arm(b)
     #input()
     #b.ev3.speaker.beep()
