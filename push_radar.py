@@ -1,3 +1,5 @@
+#!/usr/bin/env pybricks-micropython
+
 from bot import Bot
 
 if __name__ == "__main__":
