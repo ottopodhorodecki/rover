@@ -28,10 +28,10 @@ class Bot:
 
         return distance_moved
 
-    def actuate_arm(self, reversing: bool = False):
+    def actuate_arm(self, reversing: bool = False, actuation_value: int = 170):
         # reverse=True: arm goes up
         # reverse=False: arm goes down
-        d = -170 if not reversing else 170
+        d = -actuation_value if not reversing else actuation_value
         self._arm_motor.run_angle(100, d, then=Stop.HOLD, wait=True)
         self._arm_motor.hold()
 
