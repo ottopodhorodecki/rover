@@ -13,6 +13,15 @@ def fetch_item_straight_line(b: Bot):
     b.robot.turn(180)
 
 
+def fetch_all_asteroids(b: Bot):
+    b.robot.turn(-35)
+    fetch_item_straight_line(b)
+    b.robot.turn(130)
+    fetch_item_straight_line(b)
+    b.robot.turn(50)
+    fetch_item_straight_line(b)
+
+
 if __name__ == '__main__':
     bot = Bot()
-    fetch_item_straight_line(bot)
+    fetch_all_asteroids(bot)
