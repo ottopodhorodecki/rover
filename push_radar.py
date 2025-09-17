@@ -4,11 +4,11 @@ from bot import Bot
 
 if __name__ == "__main__":
     bot = Bot()
-    bot.actuate_arm()
+    bot.actuate_arm(actuation_value=150)
     bot.robot.straight(400)
     bot.robot.turn(-40)
     bot.robot.straight(400)
-    bot.actuate_arm(True)
+    bot.actuate_arm(True, actuation_value=150)
     #bot.robot.turn(-180)
     bot.robot.straight(-400)
     bot.robot.turn(-150)
