@@ -10,5 +10,5 @@ def release_hammer(b: Bot):
 
 
 if __name__ == '__main__':
-    release_hammer(Bot())
-    
+    b = Bot()
+    release_hammer(b)
