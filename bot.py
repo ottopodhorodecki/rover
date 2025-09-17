@@ -36,9 +36,9 @@ class Bot:
         self._arm_motor.hold()
 
     def update_coords(self, distance):
-        rad = math.radians(self.rotation)
-        self.coords[0] += math.cos(rad)
-        self.coords[1] += math.sin(rad)
+        rad = math.radians(self._rotation)
+        self._coords[0] += distance * math.cos(rad)
+        self._coords[1] += distance * math.sin(rad)
     
     def update_rotation(self, angle):
         self._rotation += angle
