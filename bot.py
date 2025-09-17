@@ -45,7 +45,7 @@ class Bot:
     
     def go_home(self):
         self.rotate(-self._rotation)
-        self.move_forward(math.sqrt(self._coords[1]**2 + self._coords[0]**2))
+        self.robot.straight(math.sqrt(self._coords[1]**2 + self._coords[0]**2))
     
     def rotate(self, degrees: float):
         self._left_motor.run_angle(100, degrees, wait=True)
