@@ -1,10 +1,9 @@
 import math
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, UltrasonicSensor, GyroSensor, Stop
-from pybricks.parameters import Direction
+from pybricks.ev3devices import Motor, UltrasonicSensor, Stop
 from pybricks.robotics import DriveBase
 
-from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, GYRO_PORT, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, ROTATION_COMPENSATION
+from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, ROTATION_COMPENSATION
 
 
 class Bot:
@@ -15,7 +14,6 @@ class Bot:
         self._arm_motor = Motor(ARM_PORT)
         self._robot = DriveBase(self._left_motor, self._right_motor, wheel_diameter=WHEEL_DIAMETER, axle_track=AXLE_TRACK)
         self._ultrasonic = UltrasonicSensor(ULTRASONIC_PORT)
-        self._gyro = GyroSensor(GYRO_PORT, Direction.CLOCKWISE)
         self._coords = [0, 0]
         self._rotation = 0
 
@@ -31,6 +29,8 @@ class Bot:
         return distance_moved
 
     def actuate_arm(self, reversing: bool = False):
+        # reverse=True: arm goes up
+        # reverse=False: arm goes down
         d = -170 if not reversing else 170
         self._arm_motor.run_angle(100, d, then=Stop.HOLD, wait=True)
         self._arm_motor.hold()
@@ -63,11 +63,3 @@ class Bot:
     @property
     def ultrasonic(self) -> UltrasonicSensor:
         return self._ultrasonic
-
-    @property
-    def gyro(self) -> GyroSensor:
-        return self._gyro
-
-    @property
-    def is_level(self) -> bool:
-        return self.gyro.angle() >= 10
