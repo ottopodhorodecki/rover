@@ -7,9 +7,9 @@ if __name__ == "__main__":
     bot.actuate_arm()
     bot.robot.straight(400)
     bot.robot.turn(-40)
-    bot.robot.straight(100)
+    bot.robot.straight(400)
     bot.robot.turn(-180)
-    bot.robot.straight(100)
+    bot.robot.straight(400)
     bot.robot.turn(30)
     bot.robot.straight(400)
 # fowards
