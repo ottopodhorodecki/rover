@@ -7,12 +7,13 @@ if __name__ == "__main__":
     bot.actuate_arm(actuation_value=150)
     bot.robot.straight(400)
     bot.robot.turn(-40)
-    bot.robot.straight(400)
+    bot.robot.straight(300)
+    bot.robot.straight(-50)
     bot.actuate_arm(True, actuation_value=150)
     #bot.robot.turn(-180)
     bot.robot.straight(-400)
     bot.robot.turn(-150)
-    bot.robot.straight(400)
+    bot.robot.straight(300)
     
 # fowards
 # turn left
