@@ -4,9 +4,9 @@ from bot import Bot
 
 
 def release_hammer(b: Bot):
-    b.robot.straight(300)
+    b.robot.straight(-500)
     b.release_hammer()
-    b.robot.straight(-300)
+    b.robot.straight(500)
 
 
 if __name__ == '__main__':
