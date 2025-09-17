@@ -8,10 +8,12 @@ if __name__ == "__main__":
     bot.robot.straight(400)
     bot.robot.turn(-40)
     bot.robot.straight(400)
-    bot.robot.turn(-180)
+    bot.actuate_arm(True)
+    #bot.robot.turn(-180)
+    bot.robot.straight(-400)
+    bot.robot.turn(-150)
     bot.robot.straight(400)
-    bot.robot.turn(30)
-    bot.robot.straight(400)
+    
 # fowards
 # turn left
 # forwards
