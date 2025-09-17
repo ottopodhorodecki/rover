@@ -3,7 +3,8 @@ from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, UltrasonicSensor, Stop
 from pybricks.robotics import DriveBase
 
-from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, ROTATION_COMPENSATION
+from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, \
+    ROTATION_COMPENSATION, HAMMER_PORT
 
 
 class Bot:
@@ -12,6 +13,7 @@ class Bot:
         self._left_motor = Motor(L_WHEEL_PORT)
         self._right_motor = Motor(R_WHEEL_PORT)
         self._arm_motor = Motor(ARM_PORT)
+        self._hammer_motor = Motor(HAMMER_PORT)
         self._robot = DriveBase(self._left_motor, self._right_motor, wheel_diameter=WHEEL_DIAMETER, axle_track=AXLE_TRACK)
         self._ultrasonic = UltrasonicSensor(ULTRASONIC_PORT)
         self._coords = [0, 0]
@@ -51,6 +53,9 @@ class Bot:
         self._left_motor.run_angle(100, degrees, wait=True)
         self._right_motor.run_angle(100, ROTATION_COMPENSATION, wait=True)
         self._rotation += degrees
+
+    def release_hammer(self):
+        self._hammer_motor.run_angle(250, 70, wait=True)
 
     @property
     def robot(self) -> DriveBase:

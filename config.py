@@ -3,6 +3,7 @@ from pybricks.parameters import Port
 ARM_PORT = Port.A
 L_WHEEL_PORT = Port.B
 R_WHEEL_PORT = Port.C
+HAMMER_PORT = Port.D
 ULTRASONIC_PORT = Port.S1
 WHEEL_DIAMETER = 55.5
 AXLE_TRACK = 104
