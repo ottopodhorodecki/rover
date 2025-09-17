@@ -1,7 +1,6 @@
 import math
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, UltrasonicSensor, GyroSensor, Stop
-from pybricks.parameters import Direction
+from pybricks.ev3devices import Motor, UltrasonicSensor, Stop
 from pybricks.robotics import DriveBase
 
 from config import ULTRASONIC_PORT, WHEEL_DIAMETER, AXLE_TRACK, ARM_PORT, L_WHEEL_PORT, R_WHEEL_PORT, ROTATION_COMPENSATION
